@@ -21,7 +21,6 @@
 ########################################################################################################
 ########################################################################################################
 
-
 import numpy as np
 from scipy.integrate import cumtrapz
 
@@ -129,3 +128,12 @@ def SampledPoling(numDomainsPerPeriod, numPeriods, length, Chi2Profile,
             np.savetxt(filename+'.dat', poling, '%.i')
 
     return poling
+
+def main():
+    sd = 2.
+    L  = 10.
+    GausZ = lambda z: np.exp(-(z-L/2.)**2/(2.*sd**2))
+    poling = SampledPoling(8, 50, L, GausZ, 'test', True)
+
+if __name__ == '__main__':
+    main()
